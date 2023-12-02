@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Alert, StyleSheet, View, FlatList, Text, TextInput, KeyboardAvoidingView, TouchableOpacity  } from "react-native";
 import { collection, getDocs, addDoc, onSnapshot, query, where } from "firebase/firestore";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const ShoppingLists = ({ db, route }) => {
@@ -22,20 +22,29 @@ const ShoppingLists = ({ db, route }) => {
 
 useEffect(() => {
    const q = query(collection(db, "shoppinglists"), where("uid", "==", userID));
-   const unsubShoppinglists = onSnapshot(q, (documentsSnapshot) => {
+   const unsubShoppinglists = onSnapshot(q, async (documentsSnapshot) => {
       let newLists = [];
       documentsSnapshot.forEach(doc => {
         newLists.push({ id: doc.id, ...doc.data() })
       });
+      cacheShopppingLists(newLists)
       setLists(newLists);
-    });
+   });
+
  
     // Clean up code
     return () => {
       if (unsubShoppinglists) unsubShoppinglists();
     }
   }, []);
- 
+
+  const cacheShoppingLists = async (listsToCache) => {
+    try {
+      await AsyncStorage.setItem("shopping_lists", JSON.stringify(newLists));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
  return (
     <View style={styles.container}>
