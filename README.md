@@ -72,7 +72,7 @@ Before you start, ensure you have the following installed:
 
 3. Install dependencies:
 
-  ```bash
+   ```bash
    npm install
    ```
 
@@ -92,7 +92,7 @@ ios: Start the Expo development server for iOS
 web: Start the Expo development server for web
 
 ## Dependencies
-
+```bash
 @react-native-community/netinfo: ^11.1.1
 @react-navigation/native: ^6.1.9
 @react-navigation/native-stack: ^6.9.17
@@ -105,11 +105,7 @@ react-native-safe-area-context: 4.6.3
 react-native-screens: ~3.22.0
 Development Dependencies
 @babel/core: ^7.20.0
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
+```
 ## Acknowledgments
 
 Thanks to the Expo and React Native communities for their valuable contributions.
