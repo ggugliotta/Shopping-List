@@ -66,15 +66,21 @@ Before you start, ensure you have the following installed:
    
 2. Navigate to the project directory:
 
+```bash
   cd shopping-app
+  ```
 
 3. Install dependencies:
 
-  npm install
+  ```bash
+npm install
+```
 
 4. Start the development server:
 
+```bash
   npm start
+```
 
 This will launch the Expo development server.
 
